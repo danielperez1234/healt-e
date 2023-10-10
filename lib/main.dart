@@ -1,8 +1,17 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:health_e/pages/login.dart';
 import 'package:health_e/widgets/cust_textfield.dart';
 
-void main() {
+late final FirebaseApp app;
+late final FirebaseAuth auth;
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  app = await Firebase.initializeApp();
+  auth = FirebaseAuth.instance;
+
   runApp(const MyApp());
 }
 

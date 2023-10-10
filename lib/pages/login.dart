@@ -1,7 +1,13 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:health_e/constantes.dart';
+import 'package:health_e/main.dart';
+import 'package:health_e/modals/auth_modal.dart';
+import 'package:health_e/modals/loading_modal.dart';
 import 'package:health_e/pages/inicio.dart';
+import 'package:health_e/pages/mi_perfil.dart';
 import 'package:health_e/pages/registro.dart';
+import 'package:health_e/service/user_collection_fb.dart';
 import 'package:health_e/widgets/cust_button.dart';
 import 'package:health_e/widgets/cust_textfield.dart';
 
@@ -29,7 +35,11 @@ class Login extends StatelessWidget {
           Expanded(
             child: ListView(
               children: [
-                CustTextfield(textEditingController: usuario, hint: "Usuario"),
+                CustTextfield(
+                  textEditingController: usuario,
+                  hint: "Correo",
+                  textInputType: TextInputType.emailAddress,
+                ),
                 CustTextfield(
                   textEditingController: password,
                   hint: "Contraseña",
@@ -37,9 +47,18 @@ class Login extends StatelessWidget {
                 ),
                 CustButton(
                   text: "Iniciar sesión",
-                  onPress: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (_) => InicioPage()));
+                  onPress: () async {
+                    var logRes = await loadingModal(
+                        context,
+                        auth.signInWithEmailAndPassword(
+                            email: usuario.text, password: password.text));
+                    print(logRes);
+                    if (logRes is UserCredential) {
+                      userInfo = await UserCollectionFireBase()
+                          .getUserInfo(logRes.user!.uid);
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (_) => InicioPage()));
+                    }
                   },
                 ),
                 Padding(

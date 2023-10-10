@@ -12,6 +12,7 @@ class InicioPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustScaffold(
+        title: "Welcome ${userInfo['name']}",
         child: Wrap(
           children: [
             CustBotoncito(

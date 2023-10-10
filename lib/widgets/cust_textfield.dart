@@ -7,12 +7,14 @@ class CustTextfield extends StatelessWidget {
       required this.textEditingController,
       required this.hint,
       this.isPassword = false,
-      this.horizontalPadd})
+      this.horizontalPadd,
+      this.textInputType = TextInputType.text})
       : super(key: key);
   TextEditingController textEditingController;
   String hint;
   bool isPassword;
   double? horizontalPadd;
+  TextInputType textInputType;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -32,6 +34,7 @@ class CustTextfield extends StatelessWidget {
                 color: Colors.black.withOpacity(.25))
           ]),
       child: TextField(
+        keyboardType: textInputType,
         controller: textEditingController,
         decoration: InputDecoration(
             hintText: hint,

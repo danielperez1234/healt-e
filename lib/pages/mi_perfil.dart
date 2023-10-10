@@ -1,5 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:health_e/widgets/cust_scaffold.dart';
+
+late Map<String, dynamic> userInfo;
 
 class MiPerfilPage extends StatelessWidget {
   const MiPerfilPage({Key? key}) : super(key: key);
@@ -10,10 +13,10 @@ class MiPerfilPage extends StatelessWidget {
         title: "Mi perfil",
         child: Column(
           children: [
-            Text("Nombre(s)",
+            Text(userInfo['name'],
                 style: TextStyle(fontSize: 25, fontWeight: FontWeight.w700)),
             Text(
-              "Apellidos(s)",
+              userInfo['last_name'],
               style: TextStyle(),
             ),
             Expanded(

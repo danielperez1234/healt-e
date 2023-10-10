@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "931566090739",
+    "project_id": "health-e-2aecf",
+    "storage_bucket": "health-e-2aecf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:931566090739:android:9a0b0da4a9fd3097ffba86",
+        "android_client_info": {
+          "package_name": "com.danielperez.health"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBSbJFouz7LM1PTXG9h5sRNUNpeVUPeOtM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
